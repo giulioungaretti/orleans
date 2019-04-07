@@ -8,6 +8,7 @@ using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
 
+
 namespace OrleansSiloHost
 {
     public class Program
@@ -25,7 +26,8 @@ namespace OrleansSiloHost
                             options.ServiceId = "HelloWorldApp";
                         })
                         .Configure<EndpointOptions>(options => options.AdvertisedIPAddress = IPAddress.Loopback)
-                        .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(HelloGrain).Assembly).WithReferences());
+                        .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(HelloGrain).Assembly).WithReferences())
+                        .AddMemoryGrainStorage("OrleansStorage");
                 })
                 .ConfigureServices(services =>
                 {

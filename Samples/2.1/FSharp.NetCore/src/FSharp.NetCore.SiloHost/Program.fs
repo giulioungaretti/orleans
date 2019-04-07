@@ -1,7 +1,8 @@
-﻿open Microsoft.Extensions.Logging
+open Microsoft.Extensions.Logging
 open Orleans
 open Orleans.Runtime.Configuration
 open Orleans.Hosting
+open Orleans.Storage
 open System
 open FSharp.Control.Tasks
 
@@ -12,6 +13,7 @@ let buildSiloHost () =
       let builder = new SiloHostBuilder()
       builder
         .UseLocalhostClustering()
+        .AddMemoryGrainStorage("OrleansStorage")
         .ConfigureApplicationParts(fun parts ->
             parts.AddApplicationPart(typeof<HelloGrain>.Assembly)
                   .AddApplicationPart(typeof<IHello>.Assembly)
