@@ -36,13 +36,13 @@ namespace OrleansClient
                 var response = await friend.SayHello("Good morning, my friend!");
                 Console.WriteLine("\n\n{0}\n\n", response);
 
-                Console.ReadKey();
+                Console.Read();
                 return 0;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                Console.ReadKey();
+                Console.Read();
                 return 1;
             }
         }
